@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Ingeniería Hidráulica</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, system-ui; background: #f0f4f8; color: #1e2a3e; padding: 2rem; }
+        .container { max-width: 1300px; margin: 0 auto; }
+        h1 { text-align: center; font-size: 2.2rem; margin-bottom: 0.5rem; }
+        .sub { text-align: center; color: #2c5a7a; margin-bottom: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .card { background: white; border-radius: 1.2rem; padding: 1.5rem; box-shadow: 0 8px 20px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+        .card h2 { color: #1e4663; margin-bottom: 0.5rem; }
+        .card p { color: #2c3e50; line-height: 1.4; margin: 0.75rem 0; }
+        .btn { display: inline-block; background: #2c5a7a; color: white; padding: 0.5rem 1.2rem; border-radius: 2rem; text-decoration: none; font-weight: 500; margin-top: 0.8rem; }
+        .btn:hover { background: #1a3a4a; }
+        details { margin-top: 1rem; background: #f8fafc; padding: 0.6rem; border-radius: 0.8rem; font-size: 0.85rem; }
+        details summary { cursor: pointer; font-weight: 600; color: #1e4663; }
+        details ul { margin-left: 1.2rem; margin-top: 0.5rem; }
+        details li { margin: 0.3rem 0; }
+        footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #cbd5e1; color: #5a6e7a; font-size: 0.85rem; }
+        @media (max-width: 700px) { body { padding: 1rem; } .grid { gap: 1rem; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🧰 Herramientas de Ingeniería Hidráulica</h1>
+    <div class="sub">Cálculos y diseño para estructuras hidráulicas — versión web con Python (Pyodide)</div>
+
+    <div class="grid">
+        <!-- Tarjeta 1: Vaciado de Desarenador -->
+        <div class="card">
+            <h2>🏭 Vaciado de Desarenador</h2>
+            <p>Simulación del vaciado de un desarenador rectangular sin pendiente. Evolución del nivel y caudal con apertura gradual de compuerta. Transición orificio‑vertedero.</p>
+            <details>
+                <summary>📖 Referencias técnicas</summary>
+                <ul>
+                    <li><strong>Flujo por orificio:</strong> Ecuación de Bernoulli (Chow, 1959).</li>
+                    <li><strong>Flujo por vertedero rectangular:</strong> Q = (2/3)·Cd·B·√(2g)·h³̸²</li>
+                    <li><strong>Transición suave:</strong> función sigmoide (modelado propio).</li>
+                    <li><strong>Integración numérica:</strong> Runge‑Kutta (solve_ivp, SciPy).</li>
+                    <li><em>Open‑Channel Hydraulics</em>, Ven Te Chow (1959).</li>
+                </ul>
+            </details>
+            <a href="https://atkbane.github.io/vaciado-desarenador-web/" class="btn" target="_blank">Abrir herramienta →</a>
+        </div>
+
+        <!-- Tarjeta 2: Pérdida de Carga en Tuberías -->
+        <div class="card">
+            <h2>📉 Pérdida de Carga en Tuberías</h2>
+            <p>Cálculo de pérdidas por fricción y localizadas en tuberías circulares a presión. Métodos: Darcy‑Weisbach (Swamee‑Jain), Hazen‑Williams, Manning.</p>
+            <details>
+                <summary>📖 Referencias técnicas</summary>
+                <ul>
+                    <li><strong>Darcy‑Weisbach + Swamee‑Jain:</strong> Swamee, P.K. & Jain, A.K. (1976). <em>Explicit equations for pipe-flow problems</em>.</li>
+                    <li><strong>Hazen‑Williams:</strong> Hazen, A. & Williams, G.S. (1905). <em>Hydraulic Tables</em>.</li>
+                    <li><strong>Manning:</strong> Manning, R. (1890). <em>Flow of water in open channels and pipes</em>.</li>
+                    <li>Norma técnica: <em>ASTM D (pérdidas en tuberías)</em>.</li>
+                </ul>
+            </details>
+            <a href="https://atkbane.github.io/perdida-de-carga-tuberias/" class="btn" target="_blank">Abrir herramienta →</a>
+        </div>
+
+        <!-- Tarjeta 3: Diseño de Desarenador -->
+        <div class="card">
+            <h2>🏞️ Diseño de Desarenador</h2>
+            <p>Diseño hidráulico de desarenadores para centrales hidroeléctricas. Método simple (Camp) o complejo (Shields + Zanke). Incluye geometría con bisel, vertedero y condición de limpieza (N-1).</p>
+            <details>
+                <summary>📖 Referencias técnicas</summary>
+                <ul>
+                    <li><strong>Camp (1946):</strong> Velocidad de sedimentación – <em>Sedimentation and design of settling tanks</em>, ASCE.</li>
+                    <li><strong>Shields (1936):</strong> Transporte incipiente – <em>Anwendung der Ähnlichkeitsmechanik auf die Geschiebebewegung</em>.</li>
+                    <li><strong>Zanke (1977):</strong> Velocidad de caída de partículas – <em>Berechnung der Sinkgeschwindigkeiten von Sedimenten</em>.</li>
+                    <li><strong>Sokolov / Velikanov:</strong> Corrección de velocidad de caída en flujo turbulento.</li>
+                    <li><em>Hidráulica de Canales</em>, Sotelo Ávila (2002).</li>
+                </ul>
+            </details>
+            <a href="https://atkbane.github.io/diseno-desarenador-web/" class="btn" target="_blank">Abrir herramienta →</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desarrollado por <strong>atkbane</strong> — Ingeniería civil & programación por hobby</p>
+        <p>Los códigos fuente están disponibles en <a href="https://github.com/atkbane">GitHub</a>.</p>
+    </footer>
+</div>
+</body>
+</html>
